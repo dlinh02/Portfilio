@@ -210,7 +210,7 @@
         </div> -->
       </div>
     </section>
-    
+
 
 
     <!-- ----------------------------- SKILL ------------------  -->
@@ -618,34 +618,37 @@
           </div>
         </div>
 
-        <form action="" class="contact_form grid">
+        <form  class="contact_form grid">
           <div class="contact_inputs grid">
             <div class="contact_content">
-              <label for="" class="contact_lable">Name:</label>
-              <input type="text" class="contact_input" placeholder="Enter your name here" />
+              <label for="" class="contact_lable ">Name:</label>
+              <input type="text" class="contact_input" id ="name" placeholder="Enter your name here" required />
             </div>
 
             <div class="contact_content">
-              <label for="" class="contact_lable">Email:</label>
-              <input type="email" class="contact_input" placeholder="Enter your email here" />
+              <label for="" class="contact_lable ">Email:</label>
+              <input type="email" class="contact_input" id="email" placeholder="Enter your email here" required />
             </div>
 
             <div class="contact_content">
-              <label for="" class="contact_lable">Project:</label>
-              <input type="text" class="contact_input" placeholder="Enter your project here" />
+              <label for="" class="contact_lable ">Project:</label>
+              <input type="text" class="contact_input" id="project" placeholder="Enter your project here" required />
             </div>
 
             <div class="contact_content">
-              <label for="" class="contact_lable">Message:</label>
-              <textarea name="" id="" cols="0" rows="7" class="contact_input"
-                placeholder="Enter your message here"></textarea>
+              <label for="" class="contact_lable ">Message:</label>
+              <!-- <input type="text" class="contact_input" id="msg1" placeholder="Enter your project here" required /> -->
+              <textarea type="text" class="contact_input" id="msg1" placeholder="Enter your project here" required  cols="30" rows="10"></textarea>
+
+              <!-- <input name="" id="" cols="0" rows="7" class="contact_input" id="msg1" required
+                placeholder="Enter your message here"></input> -->
             </div>
 
             <div>
-              <a href="" class="button button--flex contact_button">
+              <button type="submit" class="button button--flex contact_button">
                 Send Message
                 <i class="far fa-paper-plane button-icon"></i>
-              </a>
+              </button>
             </div>
           </div>
         </form>
@@ -697,7 +700,56 @@
 
   <!-- =========================== lINK MAINJS ==================== -->
   <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+  <script src="https://smtpjs.com/v3/smtp.js"></script>  
   <script src="./assets/js/main.js"></script>
+  <!-- <script src="./assets/js/setmail.js"></script> -->
+<!-- <script>
+  function sendEmail() {
+    Email.send({
+        Host: "smtp.elasticemail.com",
+        Username: "linhdieu3001@gmail.com",
+        Password: "CBF4859FCC15250D05C05366C25C99CD8178",
+        To: 'linhdieu3001@gmail.com',
+        From: document.getElementById("email").value,
+        Subject: "New Letter",
+        Body: "Name: " + document.getElementById("name").value
+            +"<br> Email: " +document.getElementById("email").value
+            +"<br> Project: " +document.getElementById("project").value
+            +"<br> Message: " +document.getElementById("msg").value
+    }).then(
+        message => alert(message)
+    );
+}
+</script> -->
+  <script>
+    const form = document.querySelector('.contact_form');
+    function sendMsg(e) {
+    e.preventDefault();
+    
+    const name = document.querySelector('#name'),
+         email = document.querySelector('#email'),
+        project = document.querySelector('#project'),
+        msg1 = document.querySelector('#msg1');
+
+      Email.send({
+        Host: "smtp.elasticemail.com",
+        Username: "linhdieu3001@gmail.com",
+        Password: "CBF4859FCC15250D05C05366C25C99CD8178",
+        To: 'linhdieu3001@gmail.com',
+        From: 'linhdieu3001@gmail.com',
+        ReplyTo: document.getElementById("email").value,
+        Subject: "New Letter",
+        Body: "Name: " + document.getElementById("name").value
+            +"<br> Email: " +document.getElementById("email").value
+            +"<br> Message: " +document.getElementById("msg1").value
+            +"<br> Project: " +document.getElementById("project").value
+    }).then(
+        message => alert(message)
+    );
+}
+
+form.addEventListener('submit', sendMsg);
+  </script>
 </body>
 
 </html>
