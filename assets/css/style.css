@@ -976,11 +976,7 @@ img {
   color: var(--fist-color-lighter);
 }
 
-.footer_socials{
-  /* display: flex; */
-  /* căn đều các phần tử  */
-  /* justify-content: center; */
-}
+
 .footer_social{
   font-size: 1.25rem;
   margin-right: var(--mb-1-5);
